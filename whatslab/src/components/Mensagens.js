@@ -2,19 +2,29 @@ import React from 'react';
 import styled from 'styled-components'
 
 const MsgContainer = styled.div `
-    width: 50vw;
+    max-width: 20vw;
+    height: auto;
+    border: none;
+    border-radius: 5px;
+    background-color: #FFF;
+    margin: 2vw;
     display: flex;
-    
+
+    #usuario {
+        font-weight: bold;
+    }
+
+    #mensagem {
+        text-align: justify;
+    }
 `
-
-
 
 class Mensagens extends React.Component {
     render () {
         return (
             <MsgContainer>
-                <p>{this.props.usuario} : </p>
-                <p>{this.props.conteudoMensagem}</p>
+                <p id="usuario">{this.props.usuario}</p>
+                <p id="mensagem">{this.props.conteudoMensagem}</p>
             </MsgContainer>
         )
     }
