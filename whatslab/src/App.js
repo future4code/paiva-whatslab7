@@ -2,6 +2,64 @@ import React from 'react';
 import Mensagens from "./components/Mensagens";
 import styled from 'styled-components'
 
+const ContainerBody = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  #container-conteudo {
+    max-width: 50vw;
+    min-height: 100vh;
+    background-color: rgb(229, 221, 213);
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0%;
+    justify-content: space-between;
+  }
+
+  #lista-de-mensagens {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    flex: 1 1 0%;
+  }
+
+  #formulario {
+    width:100%;
+    height: 8vh; 
+  }
+
+  #usuario {
+    width: 8vw;
+    height: 5vh;
+    margin: 1vh;
+    border-radius: 5px;
+    border: none;
+  }
+
+  #mensagem {
+    width: 30vw;
+    height: 5vh;
+    margin: 1vh;
+    border-radius: 5px;
+    border: none;
+  }
+
+  button {
+    width: 8vw;
+    height: 5vh;
+    margin: 1vh;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+  }
+`
+
 class App extends React.Component {
   state = {
     //Array de objetos que irá guardar as mensagens.
@@ -27,7 +85,7 @@ class App extends React.Component {
     this.setState({ mensagens: novoMensagens })
 
     //limpa os campos do formulário
-      this.setState({
+    this.setState({
       inputUsuario: "",
       inputConteudoMensagem: ""
     })
@@ -43,35 +101,39 @@ class App extends React.Component {
     this.setState({ inputConteudoMensagem: event.target.value })
   }
 
-  render () {
+  render() {
     const ListaDeMensagens = this.state.mensagens.map(itemMensagem => {
       return (
-        <Mensagens key = {itemMensagem.usuario}
-          usuario = {itemMensagem.usuario}
-          conteudoMensagem = {itemMensagem.conteudoMensagem}
+        <Mensagens key={itemMensagem.usuario}
+          usuario={itemMensagem.usuario}
+          conteudoMensagem={itemMensagem.conteudoMensagem}
         />
       )
     })
 
     return (
-      <div>
-        <div>{ListaDeMensagens}</div>
-        <div>
-          <input 
-            value={this.state.inputUsuario}
-            onChange={this.onChangeInputUsuario}
-            placeholder={"Usuário"}
-          />
+      <ContainerBody>
+        <div id="container-conteudo">
+          <div id="lista-de-mensagens">{ListaDeMensagens}</div>
+          <div id="formulario">
+            <input 
+              id="usuario"
+              value={this.state.inputUsuario}
+              onChange={this.onChangeInputUsuario}
+              placeholder={"Usuário"}
+            />
 
-          <input 
-            value={this.state.inputConteudoMensagem}
-            onChange={this.onChangeinputConteudoMensagem}
-            placeholder={"Mensagem"}
-          />
+            <input
+              id="mensagem"
+              value={this.state.inputConteudoMensagem}
+              onChange={this.onChangeinputConteudoMensagem}
+              placeholder={"Mensagem"}
+            />
 
-          <button onClick= {this.enviarMensagem}>Enviar</button>
+            <button onClick={this.enviarMensagem}>Enviar</button>
+          </div>
         </div>
-      </div>
+      </ContainerBody>
     )
   }
 }
