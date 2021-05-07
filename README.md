@@ -1,8 +1,8 @@
 # paiva-whatslab7
 
 Participantes:
-Silas Paixao das Mercês 
-Janaina Garcia Franquis
+-Silas Paixao das Mercês 
+-Janaina Garcia Franquis
 
 Surge: squalid-word.surge.sh
 
